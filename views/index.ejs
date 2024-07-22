@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מתחילים שפה!</title>
+    <style>
+        body{
+            direction: rtl;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="/generate" method="post">
+         
+        <label for="about">מה הוא עושה ואיך?</label>
+        <input type="text" id="about" name="about">
+        <br><br>
+
+        <label for="audience">פונה לקהל יעד: (פרט! מגדר, גיל, מצב סוציואקונומי, סגנון וכו')</label>
+        <input type="text" id="audience" name="audience">
+        <br><br>
+
+        <label for="values">ערכי המותג:</label>
+        <input type="text" id="values" name="values">
+        <br><br>
+
+        <label for="rival">מה יש למתחרים? (ערכים מרכזיים, שפה חזותית)</label>
+        <input type="text" id="rival" name="rival">
+        <br><br>
+
+        <label for="preferences">העדפות אישיות:</label>
+        <input type="text" id="preferences" name="preferences">
+        <br><br>
+       
+        <button type="submit">שלח</button>
+    </form>
+
+
+    <div class="output">
+
+        <% if (typeof(response) !== 'undefined') { %>
+            <h1>אפשרויות לשפה חזותית</h1>
+            <% for(var i = 1; i < 2; i++) { %>
+                <div class="gPromp">
+                    <h2>אפשרות <%= i %>, <%= response.hebrew.title %>
+                        <h3>קו</h3>
+                        <%= response.hebrew.line %>
+                    </div>
+                    <div class="shape">
+                        <h3>צורה</h3>
+                        <%= response.hebrew.shape %>
+                    </div>
+                    <div class="color">
+                        <h3>צבע</h3>
+                        <%= response.hebrew.color %>
+                    </div>
+                    <div class="texture">
+                        <h3>מרקם</h3>
+                        <%= response.hebrew.texture %>
+                    </div>
+                    <div class="typography">
+                        <h3>טיפוגרפיה</h3>
+                        <%= response.hebrew.typography %>
+                    </div>
+                    <div class="photography">
+                        <h3>שפה צילומית</h3>
+                        <%= response.hebrew.photography %>
+                    </div>
+                </div>
+            <% } %>
+
+        <%} else if (typeof(error) !== 'undefined'){ %>
+            <p class = "error-massage"> error: <% error %></p> 
+            <% } %>
+    </div>
+</body>
+</html>
