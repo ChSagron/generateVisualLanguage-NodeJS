@@ -7,4 +7,5 @@ COPY . .
 EXPOSE 8989
 RUN chown -R node /usr/src/app
 USER node
+ENV OPENAI_API_KEY=${OPENAI_API_KEY}
 CMD ["node", "index.js"]
